@@ -15,6 +15,7 @@
   - `transpose=1` 顺时针转90°
   - `hflip` 左右翻转
 - `-vn` 禁用视频流，用于**提取音频**
+> 若编码器为x264，可以使用`-preset (ultrafast|superfast|veryfast|faster|fast|medium|slow|slower|veryslow|placebo)`，从左至右由快到慢，质量由坏到好。此选项用来调整压制时间与质量之间的关系。
 
 ## 音频
 - `-ar 48000` 设置音频采样率
@@ -42,3 +43,12 @@
 ```
 
 > 过滤器与过滤器之间使用`,`分隔
+
+## 例子
+将视频a.mp4从10秒开始截取至25秒（共15秒），并使用h264进行视频压制，使用slow预设，并转换为b.mkv：`ffmpeg -i a.mp4 -ss 00:00:10 -t 00:00:15 -vcodec h264 -preset slow b.mkv`
+将视频a.mp4进行压缩，使其由1080P变为720P，同时码率降低一半，使用slow预设：`ffmpeg -i a.mp4 -vcodec h264 -vf scale=720*1280 -b:v 1000K -preset slow a_out.mp4`
+抽取视频流：`ffmpeg -i a.mp4 -an -vcodec copy a_video_only.mp4`
+抽取音频流：`ffmpeg -i a.mp4 -vn -acodec copy a.aac`
+抽取音频流并转换为mp3：`ffmpeg -i a.mp4 -vn a.mp3`
+合并音视频：`ffmpeg -i a.mp3 -i a_video_only.mp4 -vcodec copy -acodec copy a_mix.mp4`
+封装转换：`ffmpeg -i a.mp4 -vcodec copy -acodec copy a.mkv`
