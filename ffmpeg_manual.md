@@ -45,10 +45,10 @@
 > 过滤器与过滤器之间使用`,`分隔
 
 ## 例子
-将视频a.mp4从10秒开始截取至25秒（共15秒），并使用h264进行视频压制，使用slow预设，并转换为b.mkv：`ffmpeg -i a.mp4 -ss 00:00:10 -t 00:00:15 -vcodec h264 -preset slow b.mkv`
-将视频a.mp4进行压缩，使其由1080P变为720P，同时码率降低一半，使用slow预设：`ffmpeg -i a.mp4 -vcodec h264 -vf scale=720*1280 -b:v 1000K -preset slow a_out.mp4`
-抽取视频流：`ffmpeg -i a.mp4 -an -vcodec copy a_video_only.mp4`
-抽取音频流：`ffmpeg -i a.mp4 -vn -acodec copy a.aac`
-抽取音频流并转换为mp3：`ffmpeg -i a.mp4 -vn a.mp3`
-合并音视频：`ffmpeg -i a.mp3 -i a_video_only.mp4 -vcodec copy -acodec copy a_mix.mp4`
-封装转换：`ffmpeg -i a.mp4 -vcodec copy -acodec copy a.mkv`
+- 将视频a.mp4从10秒开始截取至25秒（共15秒），并使用h264进行视频压制，使用slow预设，并转换为b.mkv：`ffmpeg -i a.mp4 -ss 00:00:10 -t 00:00:15 -vcodec h264 -preset slow b.mkv`
+- 将视频a.mp4进行压缩，使其由1080P变为720P，同时码率降低一半，使用slow预设：`ffmpeg -i a.mp4 -vcodec h264 -vf scale=720*1280 -b:v 1000K -preset slow a_out.mp4`
+- 抽取视频流：`ffmpeg -i a.mp4 -an -vcodec copy a_video_only.mp4`
+- 抽取音频流：`ffmpeg -i a.mp4 -vn -acodec copy a.aac`
+- 抽取音频流并转换为mp3：`ffmpeg -i a.mp4 -vn a.mp3`
+- 合并音视频：`ffmpeg -i a.mp3 -i a_video_only.mp4 -vcodec copy -acodec copy a_mix.mp4`
+- 封装转换：`ffmpeg -i a.mp4 -vcodec copy -acodec copy a.mkv`
